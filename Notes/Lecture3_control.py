@@ -86,3 +86,46 @@ def sum_naturals(n):
     return total
 
 # 关于testmod()测试整个文档和run_docstring_examples()测试单个函数的操作参照书
+
+# ——————————————————————————————————————————————————————————————————————————————————————————————————
+
+# call expression 和 control expression 的区别：
+# 比较下面两个例子:
+
+from math import sqrt
+
+# example 1
+def real_sqrt(x):
+    """Return the real part of the square root of x"""
+    if x >= 0:
+        return sqrt(x)
+    else:
+        return 0
+
+# example 2
+def if_(c ,t, f):
+    if c:
+        return t
+    else:
+        return f
+
+def real_sqrt2(x):
+    """Return the real part of the square root of x"""
+    return if_(x>=0, sqrt(x), 0)
+
+# Q: 二者的作用是一样的吗？
+# A: 不是
+# 前者可以控制redirect，但是后者在传参的时候必须计算sqrt(x)，当 x<0 时必然报错
+# 所以控制语句是编程语言中必不可少的一部分
+
+# ——————————————————————————————————————————————————————————————————————————————————————————————————
+
+# 短路控制：（也有人叫它 “合取” 和 “析取” ，谁知道呢）
+
+if '<left>' and '<right>':      #如果 <left> 为假，<right> 的表达式就不会被评估
+    '<suite>'
+
+if '<left>' or '<right>':       #如果 <left> 为真，<right> 的表达式就不会被评估
+    '<suite>'
+
+# fin.
